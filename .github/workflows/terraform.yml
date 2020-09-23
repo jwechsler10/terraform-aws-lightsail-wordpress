@@ -49,6 +49,8 @@ on:
     branches:
     - master
   pull_request:
+    branches: 
+      - master
 
 jobs:
   terraform:
@@ -93,3 +95,6 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: terraform apply -auto-approve
+      
+#     - name: publish to SNS topic
+#       run: aws sns publish --topic-arn
